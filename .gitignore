@@ -1,0 +1,14 @@
+/vendor/
+.env
+*.log
+
+# IDE et système
+.vscode/
+
+# Fichiers de cache
+*.cache
+/cache/
+
+# Fichiers temporaires
+*.tmp
+*.temp 
