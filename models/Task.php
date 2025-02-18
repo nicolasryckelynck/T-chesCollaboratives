@@ -41,10 +41,10 @@ class Task
         $getTaskByUserQuery->execute();
 
         $countQuery = "SELECT COUNT(*) as total FROM tasks WHERE user_id = :user_id";
-        $countStmt = $this->conn->prepare($countQuery);
-        $countStmt->bindParam(":user_id", $userId);
-        $countStmt->execute();
-        $total = $countStmt->fetch(PDO::FETCH_ASSOC)['total'];
+        $countQuery = $this->conn->prepare($countQuery);
+        $countQuery->bindParam(":user_id", $userId);
+        $countQuery->execute();
+        $total = $countQuery->fetch(PDO::FETCH_ASSOC)['total'];
 
         return [
             'tasks' => $getTaskByUserQuery->fetchAll(PDO::FETCH_ASSOC),
