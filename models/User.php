@@ -16,8 +16,7 @@ class User
 
     public function create()
     {
-        $query = "INSERT INTO  users SET name=:name, email=:email, password=:password";
-
+        $query = "INSERT INTO users SET name=:name, email=:email, password=:password";
         $createUserQuery = $this->conn->prepare($query);
 
         $createUserQuery->bindParam(":name", $this->name);
@@ -25,5 +24,22 @@ class User
         $createUserQuery->bindParam(":password", $this->password);
 
         return $createUserQuery->execute();
+    }
+
+    public function login($email, $password)
+    {
+        $query = "SELECT id, password FROM users WHERE email = :email";
+        $loginUserQuery = $this->conn->prepare($query);
+        $loginUserQuery->bindParam(":email", $email);
+        $loginUserQuery->execute();
+
+        if ($row = $loginUserQuery->fetch(PDO::FETCH_ASSOC)) {
+            if (password_verify($password, $row['password'])) {
+                session_start();
+                $_SESSION['user_id'] = $row['id'];
+                return true;
+            }
+        }
+        return false;
     }
 }

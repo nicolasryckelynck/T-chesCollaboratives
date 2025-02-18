@@ -2,7 +2,8 @@
 class Database
 {
     private $host = "localhost";
-    private $db_name = "tâches_collaboratives";
+    private $port = "8111";
+    private $db_name = "taches_collaboratives";
     private $username = "root";
     private $password = "";
     private $conn;
@@ -13,7 +14,7 @@ class Database
 
         try {
             $this->conn = new PDO(
-                "mysql:host=" . $this->host . ";dbname=" . $this->db_name,
+                "mysql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name,
                 $this->username,
                 $this->password
             );
