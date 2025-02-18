@@ -1,3 +1,4 @@
+# Dépendances et fichiers générés
 /vendor/
 .env
 *.log
