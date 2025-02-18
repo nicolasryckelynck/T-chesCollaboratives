@@ -1,9 +1,8 @@
 <?php
-
-class UserController
+class TaskController
 {
     private $db;
-    private $user;
+    private $task;
 
     public function __construct()
     {
@@ -13,11 +12,11 @@ class UserController
 
     public function index()
     {
-        require_once 'views/users/index.php';
+        require_once 'views/tasks/index.php';
     }
 
     public function create()
     {
-        require_once 'views/users/create.php';
+        require_once 'views/tasks/create.php';
     }
 }
